@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 05 - APIs e Assincronismo</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            line-height: 1.6;
+            color: #222;
+            background: #f5f7fa;
+        }
+
+        h1, h2 {
+            color: #234b75;
+        }
+
+        section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 24px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #00000010;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 1rem;
+        }
+
+        input {
+            max-width: 100%;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        button {
+            color: white;
+            background: #245a8d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .status {
+            min-height: 24px;
+        }
+
+        .erro {
+            color: #b42318;
+        }
+
+        .sucesso {
+            color: #16753b;
+        }
+
+        dl {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 8px;
+        }
+
+        dt {
+            font-weight: bold;
+        }
+
+        dd {
+            margin: 0;
+            overflow-wrap: anywhere;
+        }
+
+        #pokemon-imagem {
+            width: 160px;
+            height: 160px;
+            object-fit: contain;
+        }
+
+        .historico-item {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Objetos, Dados e Assincronismo</h1>
+        <p>Entregável de Desenvolvimento Web - Semana 05</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Parte 1 - Validação de pedidos</h2>
+            <p>Confira os pedidos válidos, os pedidos pagos e o total faturado.</p>
+
+            <ul id="lista-pedidos"></ul>
+            <p id="total-faturado"></p>
+        </section>
+
+        <section>
+            <h2>Parte 2 - Buscador de CEP</h2>
+
+            <form id="formulario-cep">
+                <label for="cep">Digite o CEP:</label><br>
+                <input
+                    type="text"
+                    id="cep"
+                    placeholder="Ex.: 01001000"
+                    inputmode="numeric"
+                    maxlength="9"
+                    required
+                >
+                <button type="submit" id="botao-cep">Buscar CEP</button>
+            </form>
+
+            <p id="status-cep" class="status" role="status" aria-live="polite"></p>
+
+            <dl id="resultado-cep"></dl>
+
+            <h3>Histórico de CEPs pesquisados</h3>
+            <ul id="historico-cep"></ul>
+        </section>
+
+        <section>
+            <h2>Parte 3 - Mini Pokédex</h2>
+
+            <form id="formulario-pokemon">
+                <label for="nome-pokemon">Nome do Pokémon:</label><br>
+                <input
+                    type="text"
+                    id="nome-pokemon"
+                    placeholder="Ex.: pikachu"
+                    required
+                >
+                <button type="submit" id="botao-pokemon">Buscar Pokémon</button>
+            </form>
+
+            <p id="status-pokemon" class="status" role="status" aria-live="polite"></p>
+
+            <div id="resultado-pokemon"></div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
